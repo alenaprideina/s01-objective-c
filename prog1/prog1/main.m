@@ -5,26 +5,61 @@
 //  Created by Alena Prideina on 27.03.18.
 //  Copyright © 2018 Prideina Alena. All rights reserved.
 //
+//  Classes, Objects and Methods
+//
 
 #import <Foundation/Foundation.h>
 
+//---- @interface section ----
+@interface Fraction:NSObject
+-(void) print;
+-(void) setNumerator: (int) n;
+-(void) setDenominator: (int) d;
+-(int) numerator;
+-(int) denominator;
+@end
 
-// First program example
+//---- @implementation section ----
+@implementation Fraction {
+    int numerator;
+    int denominator;
+}
+-(void) print {
+    NSLog (@"%i/%i", numerator, denominator);
+}
+-(void) setNumerator: (int) n {
+    numerator = n;
+}
+-(void) setDenominator: (int) d {
+    denominator = d;
+}
+-(int) numerator {
+    return numerator;
+}
+-(int) denominator {
+    return denominator;
+}
+@end
+
+//---- program section ----
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
-        // insert code here...
-        NSLog(@"Programming is fun!\nProgramming in Objective-C is even more fun!");
+        Fraction *frac1 = [[Fraction alloc] init];
+        Fraction *frac2 = [[Fraction alloc] init];
         
-        int sum, value1, value2;
+        // Set 1st fraction to 2/3
+        [frac1 setNumerator:2];
+        [frac1 setDenominator:3];
         
-        value1 = 50;
-        value2 = 25;
+        // Set 2st fraction to 3/7
+        [frac1 setNumerator:3];
+        [frac1 setDenominator:7];
         
-        sum = value1 + value2;
+        // Display the fractions
+        NSLog (@"The value of frac1 is:");
+        [frac1 print];
         
-        NSLog(@"The sum of %i and %i is %i", value1, value2, sum);
-        
-        NSLog(@"In Objective-C, lowercase letters are significant.\nmain is where program execution begins.\nOpen and closed braces enclose program statements in a routine.\nAll program statements must be terminated by a semicolon.");
+        NSLog (@"The value of frac2 is: %i/%i", [frac2 numerator], [frac2 denominator]);
     }
     return 0;
 }
