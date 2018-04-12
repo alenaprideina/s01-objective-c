@@ -10,56 +10,56 @@
 
 #import <Foundation/Foundation.h>
 
-//---- @interface section ----
-@interface Fraction:NSObject
--(void) print;
--(void) setNumerator: (int) n;
--(void) setDenominator: (int) d;
--(int) numerator;
--(int) denominator;
+@interface Human:NSObject
+-(void) run;
+-(void) sleep: (int) s;
+-(void) eat: (int) e;
+-(void) setEnergyPoint: (int) e;
+-(void) setAge: (int) a;
+-(int) energyPoint;
+-(int) age;
 @end
 
-//---- @implementation section ----
-@implementation Fraction {
-    int numerator;
-    int denominator;
+@implementation Human {
+    int energyPoint;
+    int age;
 }
--(void) print {
-    NSLog (@"%i/%i", numerator, denominator);
+-(void) run {
+    energyPoint--;
 }
--(void) setNumerator: (int) n {
-    numerator = n;
+-(void) eat:(int) e {
+    energyPoint +=e;
 }
--(void) setDenominator: (int) d {
-    denominator = d;
+-(void) sleep:(int) s {
+    energyPoint +=s;
 }
--(int) numerator {
-    return numerator;
+-(void) setEnergyPoint: (int) e {
+    energyPoint = e;
 }
--(int) denominator {
-    return denominator;
+-(void) setAge: (int) a {
+    age = a;
+}
+-(int) energyPoint {
+    return energyPoint;
+}
+-(int) age {
+    return age;
 }
 @end
 
-//---- program section ----
 int main(int argc, const char * argv[]) {
     @autoreleasepool {
-        Fraction *frac1 = [[Fraction alloc] init];
-        Fraction *frac2 = [[Fraction alloc] init];
+        Human *Alena = [Human alloc];
+        Alena = [Alena init];
+        [Alena setAge:24];
+        [Alena setEnergyPoint:50];
         
-        // Set 1st fraction to 2/3
-        [frac1 setNumerator:2];
-        [frac1 setDenominator:3];
+        [Alena sleep:10];
+        [Alena eat:3];
         
-        // Set 2st fraction to 3/7
-        [frac1 setNumerator:3];
-        [frac1 setDenominator:7];
+        [Alena run];
         
-        // Display the fractions
-        NSLog (@"The value of frac1 is:");
-        [frac1 print];
-        
-        NSLog (@"The value of frac2 is: %i/%i", [frac2 numerator], [frac2 denominator]);
+        NSLog (@"Alena's age is: %i. She has %i energy's point.", [Alena age], [Alena energyPoint]);
     }
     return 0;
 }
